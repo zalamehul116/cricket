@@ -1,0 +1,299 @@
+[
+  {
+    "id": 1,
+    "mobile": "7359270081",
+    "timestamp": "8/12/2026, 3:06:10 PM",
+    "name": "Chauhan Vishalkumar",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1uxZJehlUX52mzT8y3A-GDkQvWKMPTKB3",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 2,
+    "mobile": "7226933158",
+    "timestamp": "8/12/2026, 3:17:21 PM",
+    "name": "Rahil mansuri",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1O_K8AiFo31pLna0DQ4hbWZjSDwuZ1ns3",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 3,
+    "mobile": "9429237232",
+    "timestamp": "8/12/2026, 3:24:00 PM",
+    "name": "RAHEVAR MAHENDRASINH",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1lPvHhgJKN2Wh3IBuhH--22qAjYevc8Ec",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 4,
+    "mobile": "9909051525",
+    "timestamp": "8/12/2026, 3:44:09 PM",
+    "name": "JANAKSINH RAHEVAR",
+    "playingAs": "Captain",
+    "playerPhoto": "https://drive.google.com/open?id=1n_PxYqt072KIZJHIeRfPTHODewtDJH5b",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 5,
+    "mobile": "9998764520",
+    "timestamp": "8/12/2026, 3:49:18 PM",
+    "name": "Ajay thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1lBqkS1yyksfEunLNVBLQY3RmQaTb9en4",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 6,
+    "mobile": "9512636860",
+    "timestamp": "8/12/2026, 3:50:19 PM",
+    "name": "Santosh Makvana",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=14w65lmzXy7qwq2YKgaTgfEJWIQnfhcdZ",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 7,
+    "mobile": "7359200312",
+    "timestamp": "8/12/2026, 3:50:38 PM",
+    "name": "Vijay thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1bBcIY9ksgv3IY-Npo4ljwvvslFc4x_CP",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 8,
+    "mobile": "8128621418",
+    "timestamp": "8/12/2026, 3:50:57 PM",
+    "name": "Dharmik Patel",
+    "playingAs": "Captain",
+    "playerPhoto": "https://drive.google.com/open?id=1XdoOf3nSfqC6PV-mZgOhJRIXkCQ8PtDJ",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 9,
+    "mobile": "9316383256",
+    "timestamp": "8/12/2026, 3:56:58 PM",
+    "name": "Devraj thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1BlSvAjDMLFc6kCVXkTH37quFvdrD8iWS",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 10,
+    "mobile": "7802081094",
+    "timestamp": "8/12/2026, 4:09:53 PM",
+    "name": "Nikul thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1V37q5zVogzzrHintgA95sCcqNHySILNs",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 11,
+    "mobile": "7874350810",
+    "timestamp": "8/12/2026, 4:13:02 PM",
+    "name": "Ravi Patel",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1w9lKC7GdHo_QlgEuKFHqcngCkbrTqGmM",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 12,
+    "mobile": "9099626472",
+    "timestamp": "8/12/2026, 4:18:22 PM",
+    "name": "Ravindrasinh Rathod",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1-AbWHyIKDVEz5khsV8KowBAVurzTTcHT",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 13,
+    "mobile": "8200040286",
+    "timestamp": "8/12/2026, 4:20:34 PM",
+    "name": "PATEL RITIK VASANTBHAI",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1gvl5le0NCJLWXTLB3JiQWZhyaDF2ahCC",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 14,
+    "mobile": "8866464011",
+    "timestamp": "8/12/2026, 4:35:49 PM",
+    "name": "Mandip thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1w_vhZQDoSAbsB7oYxrmxPIjS88WMYGUu",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 15,
+    "mobile": "9724922694",
+    "timestamp": "8/12/2026, 4:37:37 PM",
+    "name": "Vishnu solanki",
+    "playingAs": "Player",
+    "playerPhoto": "https://ik.imagekit.io/i087hdblp/oction-uploads/Screenshot__2__TrlT7zIiq.png",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 16,
+    "mobile": "91043 00684",
+    "timestamp": "8/12/2026, 4:38:58 PM",
+    "name": "Amit solanki",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1aMuHHe3v4_TzL-vLnJCTafSbaCkiZVbv",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 17,
+    "mobile": "9099645345",
+    "timestamp": "8/12/2026, 4:40:15 PM",
+    "name": "Pravin solanki",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1bBnE1kS7RV4PVs-iLyDKKV4b_8IzuG4c",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 18,
+    "mobile": "94282 59219",
+    "timestamp": "8/12/2026, 4:41:46 PM",
+    "name": "Dhruv padya",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1FO2qoUMtSLbH33aCHOJKaLy-hOWZcs3k",
+    "playingRole": "Wicket-Keeper"
+  },
+  {
+    "id": 19,
+    "mobile": "70966 52013",
+    "timestamp": "8/12/2026, 4:43:06 PM",
+    "name": "Bhavesh solanki",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1-Xb8eCFNpCWNScWu59PrJhhjPjQj9flb",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 20,
+    "mobile": "9429532581",
+    "timestamp": "8/12/2026, 4:45:56 PM",
+    "name": "Navdip",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1mJjaoX1zRCgInU0AOPHghNsyPqkU8VjC",
+    "playingRole": "Bowler"
+  },
+  {
+    "id": 21,
+    "mobile": "9725184802",
+    "timestamp": "8/12/2026, 4:49:29 PM",
+    "name": "Mehul Zala",
+    "playingAs": "Player",
+    "playerPhoto": "/uploads/player_1786599726054_1nhsv.jpeg",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 22,
+    "mobile": "8799182301",
+    "timestamp": "8/12/2026, 4:54:31 PM",
+    "name": "Aashish thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1hfz2GMs0uMDVgyvuiQFVwSaLTvbAWOO0",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 23,
+    "mobile": "8128366026",
+    "timestamp": "8/12/2026, 4:58:22 PM",
+    "name": "Surajsinh Rathod",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1xO-0cLKDN2Tk02eBg1cOznfhSz_wtiH9",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 24,
+    "mobile": "8401128102",
+    "timestamp": "8/12/2026, 5:00:01 PM",
+    "name": "Bhavansinh Rathod",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1hvQfijVtP4bl6ahAFGlXyubWyJpdtUsx",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 25,
+    "mobile": "81415 64592",
+    "timestamp": "8/12/2026, 5:12:52 PM",
+    "name": "Nikhil makwana",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=13J6bNqqCwR819hObQU71GAH_7AqL6Qag",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 26,
+    "mobile": "9484443536",
+    "timestamp": "8/12/2026, 5:20:40 PM",
+    "name": "Tirth joshi",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1GNyOl2tMGCuDq7OG5et4mdBB8oGPlodR",
+    "playingRole": "Batsman"
+  },
+  {
+    "id": 27,
+    "mobile": "9081401020",
+    "timestamp": "8/12/2026, 5:23:16 PM",
+    "name": "Gavrav rana",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1yS2AZJCkQL4I0R6_VmAkkxT_eIcQVGHN",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 28,
+    "mobile": "+91 97241 06057",
+    "timestamp": "8/12/2026, 5:27:56 PM",
+    "name": "Kirit Thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1DsdMAeh37aIzlMIufYDaUZXMOMbE13O8",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 29,
+    "mobile": "9662319068",
+    "timestamp": "8/12/2026, 5:48:08 PM",
+    "name": "Rakesh solanki",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1i_H2M3nWvgMijzipFZGF_AXh-1OOWVCp",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 30,
+    "mobile": "+91 93276 72216",
+    "timestamp": "8/12/2026, 5:32:49 PM",
+    "name": "Milan Thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1SkSQnwAwOx2YQby1IzOQ91W13GBNc0qU",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 31,
+    "mobile": "+91 76002 63381",
+    "timestamp": "8/12/2026, 5:38:01 PM",
+    "name": "Kirit varma",
+    "playingAs": "Captain",
+    "playerPhoto": "https://drive.google.com/open?id=1nFxVQhGoLJD1oYsH-FSaCD1yKnIdwpWK",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 32,
+    "mobile": "7383471484",
+    "timestamp": "8/12/2026, 5:44:33 PM",
+    "name": "Maulik",
+    "playingAs": "Player",
+    "playerPhoto": "https://drive.google.com/open?id=1U-IBwd1Ub15yS7gPrc_x16mt8fq9fw0N",
+    "playingRole": "All-Rounder"
+  },
+  {
+    "id": 34,
+    "mobile": "8140770828",
+    "timestamp": "2026-08-13T05:26:42.795Z",
+    "name": "Prakash Thakor",
+    "playingAs": "Player",
+    "playerPhoto": "https://ik.imagekit.io/i087hdblp/oction-uploads/Screenshot__1__i2eq2xcOx.png",
+    "playingRole": "All-Rounder"
+  }
+]

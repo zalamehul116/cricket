@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "auctionId": 2,
+    "playerId": 1,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 2,
+    "auctionId": 2,
+    "playerId": 2,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 100000
+  },
+  {
+    "id": 3,
+    "auctionId": 2,
+    "playerId": 3,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 4,
+    "auctionId": 2,
+    "playerId": 4,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 5,
+    "auctionId": 2,
+    "playerId": 5,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 6,
+    "auctionId": 2,
+    "playerId": 6,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 7,
+    "auctionId": 2,
+    "playerId": 7,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 200000
+  },
+  {
+    "id": 8,
+    "auctionId": 2,
+    "playerId": 8,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 9,
+    "auctionId": 2,
+    "playerId": 9,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 10,
+    "auctionId": 2,
+    "playerId": 10,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 150000
+  },
+  {
+    "id": 11,
+    "auctionId": 2,
+    "playerId": 11,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 12,
+    "auctionId": 2,
+    "playerId": 12,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 13,
+    "auctionId": 2,
+    "playerId": 13,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 14,
+    "auctionId": 2,
+    "playerId": 14,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 15,
+    "auctionId": 2,
+    "playerId": 15,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 16,
+    "auctionId": 2,
+    "playerId": 16,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 17,
+    "auctionId": 2,
+    "playerId": 17,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 18,
+    "auctionId": 2,
+    "playerId": 18,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 19,
+    "auctionId": 2,
+    "playerId": 19,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 20,
+    "auctionId": 2,
+    "playerId": 20,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 21,
+    "auctionId": 2,
+    "playerId": 21,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 22,
+    "auctionId": 2,
+    "playerId": 22,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 23,
+    "auctionId": 2,
+    "playerId": 23,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 24,
+    "auctionId": 2,
+    "playerId": 24,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 25,
+    "auctionId": 2,
+    "playerId": 25,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 26,
+    "auctionId": 2,
+    "playerId": 26,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 27,
+    "auctionId": 2,
+    "playerId": 27,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 28,
+    "auctionId": 2,
+    "playerId": 28,
+    "status": "Captain",
+    "teamId": 1,
+    "soldPrice": 0
+  },
+  {
+    "id": 30,
+    "auctionId": 2,
+    "playerId": 30,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 31,
+    "auctionId": 2,
+    "playerId": 31,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 32,
+    "auctionId": 2,
+    "playerId": 32,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 41,
+    "auctionId": 3,
+    "playerId": 23,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 55,
+    "auctionId": 3,
+    "playerId": 1,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  },
+  {
+    "id": 60,
+    "auctionId": 3,
+    "playerId": 11,
+    "status": "Sold",
+    "teamId": 1,
+    "soldPrice": 50000
+  },
+  {
+    "id": 66,
+    "auctionId": 2,
+    "playerId": 34,
+    "status": "",
+    "teamId": null,
+    "soldPrice": null
+  },
+  {
+    "id": 67,
+    "auctionId": 3,
+    "playerId": 34,
+    "status": "Sold",
+    "teamId": 2,
+    "soldPrice": 50000
+  }
+]

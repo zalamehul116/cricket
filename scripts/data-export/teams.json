@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Deshottar Kings",
+    "owner": "Mehul Zala",
+    "budget": 10000000,
+    "logo": "/uploads/player_1786602179093_h7xg0.jpeg",
+    "captain": "Kirit Thakor",
+    "captainMobile": "+91 97241 06057",
+    "passcode": "7482"
+  },
+  {
+    "id": 2,
+    "name": "Gramin Warriors",
+    "owner": "Suresh Patel",
+    "budget": 10000000,
+    "logo": "oction-uploads/coolie-rajinikanth-7680x4320-23629_n_99e9J6Zu.jpg",
+    "captain": "Rahil mansuri",
+    "captainMobile": "7226933158",
+    "passcode": "7482"
+  }
+]

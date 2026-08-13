@@ -1,0 +1,30 @@
+[
+  {
+    "id": 2,
+    "name": "Auctions",
+    "status": "Active",
+    "teams": "[1,2]",
+    "activePlayerId": 27,
+    "currentBidPrice": 50000,
+    "currentBidderTeamId": null,
+    "timerEndsAt": "2026-08-13T07:44:10.744Z",
+    "playersLimit": 33,
+    "timerDuration": 120,
+    "isPaused": 0,
+    "pausedTimeRemaining": null
+  },
+  {
+    "id": 3,
+    "name": "Auctions-2",
+    "status": "Active",
+    "teams": "[1,2]",
+    "activePlayerId": null,
+    "currentBidPrice": 50000,
+    "currentBidderTeamId": null,
+    "timerEndsAt": null,
+    "playersLimit": 20,
+    "timerDuration": 120,
+    "isPaused": 0,
+    "pausedTimeRemaining": null
+  }
+]

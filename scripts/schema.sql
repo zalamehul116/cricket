@@ -1,0 +1,61 @@
+-- PostgreSQL schema for cricket auction app
+
+CREATE TABLE IF NOT EXISTS teams (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  owner VARCHAR(100) NOT NULL DEFAULT '',
+  budget BIGINT NOT NULL DEFAULT 10000000,
+  logo TEXT NULL,
+  captain VARCHAR(100) NOT NULL DEFAULT '',
+  captainmobile VARCHAR(20) NOT NULL DEFAULT '',
+  passcode VARCHAR(50) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS players (
+  id SERIAL PRIMARY KEY,
+  mobile VARCHAR(20) NOT NULL UNIQUE,
+  timestamp VARCHAR(50) NOT NULL DEFAULT '',
+  name VARCHAR(100) NOT NULL DEFAULT '',
+  playingas VARCHAR(100) NOT NULL DEFAULT '',
+  playerphoto TEXT NULL,
+  playingrole VARCHAR(100) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS auctions (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  status VARCHAR(20) NOT NULL DEFAULT 'Draft',
+  teams TEXT NULL,
+  activeplayerid INT NULL REFERENCES players(id) ON DELETE SET NULL,
+  currentbidprice INT NOT NULL DEFAULT 0,
+  currentbidderteamid INT NULL REFERENCES teams(id) ON DELETE SET NULL,
+  timerendsat VARCHAR(50) NULL,
+  playerslimit INT NOT NULL DEFAULT 20,
+  timerduration INT NOT NULL DEFAULT 120,
+  ispaused BOOLEAN NOT NULL DEFAULT FALSE,
+  pausedtimeremaining INT NULL
+);
+
+CREATE TABLE IF NOT EXISTS auction_players (
+  id SERIAL PRIMARY KEY,
+  auctionid INT NOT NULL REFERENCES auctions(id) ON DELETE CASCADE,
+  playerid INT NOT NULL REFERENCES players(id) ON DELETE CASCADE,
+  status VARCHAR(20) NOT NULL DEFAULT '',
+  teamid INT NULL REFERENCES teams(id) ON DELETE SET NULL,
+  soldprice INT NULL,
+  UNIQUE (auctionid, playerid)
+);
+
+CREATE TABLE IF NOT EXISTS auction_teams (
+  id SERIAL PRIMARY KEY,
+  auctionid INT NOT NULL REFERENCES auctions(id) ON DELETE CASCADE,
+  teamid INT NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
+  budget BIGINT NOT NULL DEFAULT 10000000,
+  UNIQUE (auctionid, teamid)
+);
+
+CREATE TABLE IF NOT EXISTS admins (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
