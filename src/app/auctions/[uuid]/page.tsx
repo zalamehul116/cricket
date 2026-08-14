@@ -652,6 +652,14 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
         </div>
 
         <div className="page-actions">
+          <button
+            onClick={() => router.push(`/auctions/${encodeURIComponent(auctionUuid)}/dashboard`)}
+            className="btn btn-secondary"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderColor: 'var(--info)', color: 'var(--info)' }}
+          >
+            <TrendingUp size={14} />
+            <span>Dashboard</span>
+          </button>
           {isAdmin && (
             <button
               onClick={() => router.push(`/auctions/${encodeURIComponent(auctionUuid)}/players`)}
