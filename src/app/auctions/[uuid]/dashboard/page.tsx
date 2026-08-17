@@ -31,7 +31,28 @@ export default function AuctionDashboardPage({ params }: { params: Promise<{ uui
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [isActionLoading, setIsActionLoading] = useState<boolean>(false);
   const [exportingTeam, setExportingTeam] = useState<string | null>(null);
+  const [session, setSession] = useState<{ loggedIn: boolean; role?: 'admin' | 'team'; name?: string } | null>(null);
+
+  const checkSession = async () => {
+    try {
+      const res = await fetch(`/api/auth/session?t=${Date.now()}`, { cache: 'no-store' });
+      const data = await res.json();
+      if (data.success) {
+        setSession(data);
+      }
+    } catch (err) {
+      console.error('Error fetching session:', err);
+    }
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
+
+  const isAdmin = session?.loggedIn && session?.role === 'admin';
 
   // Fetch auction data, teams and players
   const fetchData = useCallback(async (showIndicator = false) => {
@@ -76,6 +97,45 @@ export default function AuctionDashboardPage({ params }: { params: Promise<{ uui
     }, 5000);
     return () => clearInterval(interval);
   }, [fetchData]);
+
+  // Admin releases a player (sets status, team and soldPrice to empty)
+  const handleReleasePlayer = async (playerMobile: string, playerName: string) => {
+    if (!activeAuction) return;
+    if (!window.confirm(`Are you sure you want to release ${playerName}? This will clear their sold/unsold status, price, team assignment, and return them to the available pool.`)) {
+      return;
+    }
+
+    setIsActionLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const resPlayer = await fetch('/api/players', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          playerMobile,
+          status: '',
+          team: '',
+          soldPrice: '',
+          auctionName: activeAuction.name
+        })
+      });
+
+      const resultPlayer = await resPlayer.json();
+      if (resultPlayer.success) {
+        setSuccess(`Player ${playerName} released successfully!`);
+        await fetchData(true);
+      } else {
+        setError(resultPlayer.error || 'Failed to release player.');
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Network error releasing player.');
+    } finally {
+      setIsActionLoading(false);
+    }
+  };
 
   // Calculations for overall summary statistics
   const totalPlayers = players.length;
@@ -479,6 +539,13 @@ export default function AuctionDashboardPage({ params }: { params: Promise<{ uui
         </div>
       )}
 
+      {success && (
+        <div className="glass-panel" style={{ padding: '1rem 1.5rem', borderColor: 'var(--success)', background: 'rgba(16, 185, 129, 0.05)', display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+          <CheckCircle style={{ color: 'var(--success)' }} />
+          <span style={{ color: 'var(--success)', fontWeight: 500 }}>{success}</span>
+        </div>
+      )}
+
       {/* Analytical Quick Stats Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
         
@@ -877,6 +944,7 @@ export default function AuctionDashboardPage({ params }: { params: Promise<{ uui
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Status</th>
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Drafted Team</th>
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Sold Price</th>
+                  {isAdmin && <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Actions</th>}
                 </tr>
               </thead>
               <tbody>
@@ -925,6 +993,26 @@ export default function AuctionDashboardPage({ params }: { params: Promise<{ uui
                       <td style={{ padding: '0.75rem 1rem', fontWeight: 800, color: isSold ? 'var(--success)' : 'var(--text-secondary)', fontSize: '0.85rem' }}>
                         {p.soldPrice ? formatCurrency(p.soldPrice) : '-'}
                       </td>
+                      {isAdmin && (
+                        <td style={{ padding: '0.75rem 1rem' }}>
+                          {(isSold || isUnsold) && (
+                            <button
+                              onClick={() => handleReleasePlayer(p.mobile, p.name)}
+                              disabled={isActionLoading}
+                              className="btn btn-secondary"
+                              style={{
+                                padding: '0.25rem 0.6rem',
+                                fontSize: '0.75rem',
+                                borderColor: 'var(--danger)',
+                                color: 'var(--danger)',
+                                background: 'transparent'
+                              }}
+                            >
+                              Release
+                            </button>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   );
                 })}

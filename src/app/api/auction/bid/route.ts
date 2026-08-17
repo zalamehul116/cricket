@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { bidPrice, auctionName } = body;
 
-    if (!bidPrice || typeof bidPrice !== 'number' || bidPrice <= 0) {
+    if (bidPrice === undefined || bidPrice === null || typeof bidPrice !== 'number' || bidPrice < 0) {
       return NextResponse.json({ success: false, error: 'Invalid bid price' }, { status: 400 });
     }
 
@@ -46,11 +46,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: `Team "${teamName}" is not registered to participate in this auction.` }, { status: 403 });
     }
 
-    // Validate that the bid is higher than the current bid price
-    if (bidPrice <= activeAuction.currentBidPrice) {
+    // Validate that the bid is higher than the current bid price (or equal to it if it's the first bid)
+    const isFirstBid = !activeAuction.currentBidderTeam;
+    if (isFirstBid ? (bidPrice < activeAuction.currentBidPrice) : (bidPrice <= activeAuction.currentBidPrice)) {
       return NextResponse.json({
         success: false,
-        error: `Bid must be higher than current bid price of ${activeAuction.currentBidPrice.toLocaleString()} INR`
+        error: isFirstBid
+          ? `Bid must be at least the starting price of ${activeAuction.currentBidPrice.toLocaleString()} INR`
+          : `Bid must be higher than current bid price of ${activeAuction.currentBidPrice.toLocaleString()} INR`
       }, { status: 400 });
     }
 

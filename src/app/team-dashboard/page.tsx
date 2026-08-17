@@ -80,7 +80,7 @@ export default function TeamDashboard() {
               setCelebrationData({
                 player: updatedPlayer,
                 team: updatedPlayer.team || '',
-                price: updatedPlayer.soldPrice || prevPlayer.soldPrice || 50000
+              price: (updatedPlayer.soldPrice !== undefined && updatedPlayer.soldPrice !== null && updatedPlayer.soldPrice !== '') ? Number(updatedPlayer.soldPrice) : ((prevPlayer.soldPrice !== undefined && prevPlayer.soldPrice !== null && prevPlayer.soldPrice !== '') ? Number(prevPlayer.soldPrice) : 50000)
               });
             }
           }
@@ -186,7 +186,7 @@ export default function TeamDashboard() {
   // Get active team details
   const myTeam = teams.find(t => t.name === session.name);
   const myPlayers = players.filter(p => p.team === session.name && p.status !== 'Unsold');
-  const totalSpent = myPlayers.reduce((sum, p) => sum + (p.soldPrice ? Number(p.soldPrice) : 0), 0);
+  const totalSpent = myPlayers.reduce((sum, p) => sum + ((p.soldPrice !== undefined && p.soldPrice !== null && p.soldPrice !== '') ? Number(p.soldPrice) : 0), 0);
   const initialBudget = myTeam ? myTeam.budget : 10000000;
   const remainingBudget = initialBudget - totalSpent;
 
@@ -396,7 +396,7 @@ export default function TeamDashboard() {
                       <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px' }}>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Base Price</div>
                         <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>
-                          {activePlayer.soldPrice ? formatCurrency(activePlayer.soldPrice) : '₹50,000'}
+                          {(activePlayer.soldPrice !== undefined && activePlayer.soldPrice !== null && activePlayer.soldPrice !== '') ? formatCurrency(activePlayer.soldPrice) : '₹50,000'}
                         </div>
                       </div>
 
@@ -527,7 +527,7 @@ export default function TeamDashboard() {
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                       <div style={{ fontWeight: 700, color: 'var(--info)' }}>
-                        {p.soldPrice ? formatCurrency(p.soldPrice) : '₹0'}
+                        {(p.soldPrice !== undefined && p.soldPrice !== null && p.soldPrice !== '') ? formatCurrency(p.soldPrice) : '₹0'}
                       </div>
                       {p.status === 'Captain' && (
                         <span style={{ fontSize: '0.65rem', background: 'rgba(245,158,11,0.15)', color: 'var(--primary)', padding: '0.1rem 0.3rem', borderRadius: '4px', marginTop: '0.15rem', fontWeight: 600 }}>

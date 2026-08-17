@@ -124,7 +124,7 @@ export async function POST(request: Request) {
       }
 
       matchedAuction.activePlayerMobile = mobile || '';
-      matchedAuction.currentBidPrice = basePrice ? Number(basePrice) : 50000;
+      matchedAuction.currentBidPrice = (basePrice !== undefined && basePrice !== null && basePrice !== '') ? Number(basePrice) : 50000;
       
       // Update bidder team if provided; clear if mobile is empty (clearing block)
       if (!matchedAuction.activePlayerMobile) {
@@ -148,7 +148,7 @@ export async function POST(request: Request) {
     }
 
     if (action === 'resetBid') {
-      matchedAuction.currentBidPrice = basePrice ? Number(basePrice) : 50000;
+      matchedAuction.currentBidPrice = (basePrice !== undefined && basePrice !== null && basePrice !== '') ? Number(basePrice) : 50000;
       matchedAuction.currentBidderTeam = '';
       matchedAuction.isPaused = false;
       matchedAuction.pausedTimeRemaining = null;

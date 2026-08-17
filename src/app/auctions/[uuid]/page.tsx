@@ -105,7 +105,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
             setCelebrationData({
               player: updatedPlayer,
               team: updatedPlayer.team || '',
-              price: updatedPlayer.soldPrice || prevPlayer.soldPrice || 50000
+              price: (updatedPlayer.soldPrice !== undefined && updatedPlayer.soldPrice !== null && updatedPlayer.soldPrice !== '') ? Number(updatedPlayer.soldPrice) : ((prevPlayer.soldPrice !== undefined && prevPlayer.soldPrice !== null && prevPlayer.soldPrice !== '') ? Number(prevPlayer.soldPrice) : 50000)
             });
           }
         }
@@ -248,7 +248,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
     setSuccess(null);
 
     try {
-      const basePrice = player.soldPrice ? Number(player.soldPrice) : 50000;
+      const basePrice = (player.soldPrice !== undefined && player.soldPrice !== null && player.soldPrice !== '') ? Number(player.soldPrice) : 50000;
       const res = await fetch('/api/auction/list', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -279,7 +279,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
   const handleAdminBidUpdate = async (amountToAdd: number) => {
     if (!activeAuction || !activePlayer || session?.role !== 'admin') return;
 
-    const newBidPrice = activeAuction.currentBidPrice + amountToAdd;
+    const newBidPrice = Math.max(0, activeAuction.currentBidPrice + amountToAdd);
 
     try {
       await fetch('/api/auction/list', {
@@ -289,7 +289,8 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
           name: activeAuction.name,
           action: 'setPlayer',
           mobile: activePlayer.mobile,
-          basePrice: newBidPrice
+          basePrice: newBidPrice,
+          bidderTeam: newBidPrice === 0 ? '' : activeAuction.currentBidderTeam
         })
       });
       await fetchData();
@@ -425,6 +426,45 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
     }
   };
 
+  // Admin releases a player (sets status, team and soldPrice to empty)
+  const handleReleasePlayer = async (playerMobile: string, playerName: string) => {
+    if (!activeAuction) return;
+    if (!window.confirm(`Are you sure you want to release ${playerName}? This will clear their sold/unsold status, price, team assignment, and return them to the available pool.`)) {
+      return;
+    }
+
+    setIsActionLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const resPlayer = await fetch('/api/players', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          playerMobile,
+          status: '',
+          team: '',
+          soldPrice: '',
+          auctionName: auctionRoomName
+        })
+      });
+
+      const resultPlayer = await resPlayer.json();
+      if (resultPlayer.success) {
+        setSuccess(`Player ${playerName} released successfully!`);
+        await fetchData();
+      } else {
+        setError(resultPlayer.error || 'Failed to release player.');
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Network error releasing player.');
+    } finally {
+      setIsActionLoading(false);
+    }
+  };
+
   // Admin clears block
   const handleCancelBidding = async () => {
     if (!activeAuction) return;
@@ -506,7 +546,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
     if (!activeAuction || !activePlayer || session?.role !== 'admin') return;
     setIsActionLoading(true);
     try {
-      const basePrice = activePlayer.soldPrice ? Number(activePlayer.soldPrice) : 50000;
+      const basePrice = (activePlayer.soldPrice !== undefined && activePlayer.soldPrice !== null && activePlayer.soldPrice !== '') ? Number(activePlayer.soldPrice) : 50000;
       const res = await fetch('/api/auction/list', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -784,7 +824,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
                           roster.map(p => (
                             <div key={p.mobile} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', borderBottom: '1px dashed rgba(255,255,255,0.05)', paddingBottom: '0.25rem' }}>
                               <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{p.name}</span>
-                              <span style={{ color: 'var(--text-secondary)' }}>{formatCurrency(p.soldPrice || 50000)}</span>
+                              <span style={{ color: 'var(--text-secondary)' }}>{formatCurrency((p.soldPrice !== undefined && p.soldPrice !== null && p.soldPrice !== '') ? p.soldPrice : 50000)}</span>
                             </div>
                           ))
                         )}
@@ -938,10 +978,19 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
 
                     {/* Admin Quick Bid Increments */}
                     {isAdmin && (
-                      <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-                        <button onClick={() => handleAdminBidUpdate(50000)} className="btn btn-secondary" style={{ padding: '0.5rem 0.75rem', fontSize: '0.85rem' }}>+50k</button>
-                        <button onClick={() => handleAdminBidUpdate(100000)} className="btn btn-secondary" style={{ padding: '0.5rem 0.75rem', fontSize: '0.85rem' }}>+1L</button>
-                        <button onClick={() => handleAdminBidUpdate(500000)} className="btn btn-secondary" style={{ padding: '0.5rem 0.75rem', fontSize: '0.85rem' }}>+5L</button>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.25rem' }}>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Adjust Bid (Admin Only):</div>
+                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                          <button onClick={() => handleAdminBidUpdate(50000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--success)', color: 'var(--success)', background: 'transparent' }}>+50k</button>
+                          <button onClick={() => handleAdminBidUpdate(100000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--success)', color: 'var(--success)', background: 'transparent' }}>+1L</button>
+                          <button onClick={() => handleAdminBidUpdate(500000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--success)', color: 'var(--success)', background: 'transparent' }}>+5L</button>
+                          
+                          <button onClick={() => handleAdminBidUpdate(-50000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--danger)', color: 'var(--danger)', background: 'transparent' }}>-50k</button>
+                          <button onClick={() => handleAdminBidUpdate(-100000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--danger)', color: 'var(--danger)', background: 'transparent' }}>-1L</button>
+                          <button onClick={() => handleAdminBidUpdate(-500000)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--danger)', color: 'var(--danger)', background: 'transparent' }}>-5L</button>
+
+                          <button onClick={() => handleAdminBidUpdate(-activeAuction.currentBidPrice)} className="btn btn-secondary" style={{ padding: '0.4rem 0.6rem', fontSize: '0.75rem', borderColor: 'var(--warning)', color: 'var(--warning)', background: 'transparent' }}>Set to 0</button>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1191,7 +1240,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
                             {p.name} {p.status === 'Unsold' && <span style={{ color: 'var(--danger)', fontSize: '0.7rem', fontWeight: 700 }}>(Unsold)</span>}
                           </div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>
-                            {p.playingRole} • Base: {formatCurrency(p.soldPrice || 50000)}
+                            {p.playingRole} • Base: {formatCurrency((p.soldPrice !== undefined && p.soldPrice !== null && p.soldPrice !== '') ? Number(p.soldPrice) : 50000)}
                           </div>
                         </div>
 
@@ -1239,6 +1288,7 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Status</th>
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Drafted Team</th>
                   <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Price</th>
+                  {isAdmin && <th style={{ padding: '1rem', color: 'var(--text-secondary)', fontWeight: 650, fontSize: '0.85rem' }}>Actions</th>}
                 </tr>
               </thead>
               <tbody>
@@ -1283,6 +1333,26 @@ export default function AuctionRoomPage({ params }: { params: Promise<{ uuid: st
                       <td style={{ padding: '0.75rem 1rem', fontWeight: 800, color: isSold ? 'var(--success)' : 'var(--text-secondary)' }}>
                         {p.soldPrice ? formatCurrency(p.soldPrice) : '-'}
                       </td>
+                      {isAdmin && (
+                        <td style={{ padding: '0.75rem 1rem' }}>
+                          {(isSold || isUnsold) && (
+                            <button
+                              onClick={() => handleReleasePlayer(p.mobile, p.name)}
+                              disabled={isActionLoading}
+                              className="btn btn-secondary"
+                              style={{
+                                padding: '0.25rem 0.6rem',
+                                fontSize: '0.75rem',
+                                borderColor: 'var(--danger)',
+                                color: 'var(--danger)',
+                                background: 'transparent'
+                              }}
+                            >
+                              Release
+                            </button>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   );
                 })}
